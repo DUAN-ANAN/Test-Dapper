@@ -31,7 +31,7 @@ namespace test_Dapper.Models
         /// <summary>
         /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
         /// </summary>
-        public Guid Rowguid { get; set; }
+        public Guid rowguid { get; set; }
         /// <summary>
         /// Date and time the record was last updated.
         /// </summary>

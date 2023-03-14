@@ -16,7 +16,7 @@ namespace test_Dapper.Models
         public int ProductModelId { get; set; }
         public string Name { get; set; }
         public string CatalogDescription { get; set; }
-        public Guid Rowguid { get; set; }
+        public Guid rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
         public virtual ICollection<Product> Product { get; set; }

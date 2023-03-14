@@ -41,7 +41,7 @@ namespace test_Dapper.Models
 
                 entity.HasComment("Street address information for customers.");
 
-                entity.HasIndex(e => e.Rowguid, "AK_Address_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_Address_rowguid")
                     .IsUnique();
 
                 entity.HasIndex(e => new { e.AddressLine1, e.AddressLine2, e.City, e.StateProvince, e.PostalCode, e.CountryRegion }, "IX_Address_AddressLine1_AddressLine2_City_StateProvince_PostalCode_CountryRegion");
@@ -80,10 +80,10 @@ namespace test_Dapper.Models
                     .HasMaxLength(15)
                     .HasComment("Postal code for the street address.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.Property(e => e.StateProvince)
                     .IsRequired()
@@ -124,7 +124,7 @@ namespace test_Dapper.Models
 
                 entity.HasComment("Customer information.");
 
-                entity.HasIndex(e => e.Rowguid, "AK_Customer_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_Customer_rowguid")
                     .IsUnique();
 
                 entity.HasIndex(e => e.EmailAddress, "IX_Customer_EmailAddress");
@@ -178,10 +178,10 @@ namespace test_Dapper.Models
                     .HasMaxLength(25)
                     .HasComment("Phone number associated with the person.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.Property(e => e.SalesPerson)
                     .HasMaxLength(256)
@@ -205,7 +205,7 @@ namespace test_Dapper.Models
 
                 entity.HasComment("Cross-reference table mapping customers to their address(es).");
 
-                entity.HasIndex(e => e.Rowguid, "AK_CustomerAddress_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_CustomerAddress_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.CustomerId)
@@ -226,10 +226,10 @@ namespace test_Dapper.Models
                     .HasDefaultValueSql("(getdate())")
                     .HasComment("Date and time the record was last updated.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.HasOne(d => d.Address)
                     .WithMany(p => p.CustomerAddress)
@@ -290,7 +290,7 @@ namespace test_Dapper.Models
                 entity.HasIndex(e => e.ProductNumber, "AK_Product_ProductNumber")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid, "AK_Product_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_Product_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductId)
@@ -332,10 +332,10 @@ namespace test_Dapper.Models
                     .HasMaxLength(25)
                     .HasComment("Unique product identification number.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.Property(e => e.SellEndDate)
                     .HasColumnType("datetime")
@@ -381,7 +381,7 @@ namespace test_Dapper.Models
                 entity.HasIndex(e => e.Name, "AK_ProductCategory_Name")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid, "AK_ProductCategory_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_ProductCategory_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductCategoryId)
@@ -402,10 +402,10 @@ namespace test_Dapper.Models
                     .HasColumnName("ParentProductCategoryID")
                     .HasComment("Product category identification number of immediate ancestor category. Foreign key to ProductCategory.ProductCategoryID.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.HasOne(d => d.ParentProductCategory)
                     .WithMany(p => p.InverseParentProductCategory)
@@ -419,7 +419,7 @@ namespace test_Dapper.Models
 
                 entity.HasComment("Product descriptions in several languages.");
 
-                entity.HasIndex(e => e.Rowguid, "AK_ProductDescription_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_ProductDescription_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductDescriptionId)
@@ -436,10 +436,10 @@ namespace test_Dapper.Models
                     .HasDefaultValueSql("(getdate())")
                     .HasComment("Date and time the record was last updated.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
             });
 
             modelBuilder.Entity<ProductModel>(entity =>
@@ -449,7 +449,7 @@ namespace test_Dapper.Models
                 entity.HasIndex(e => e.Name, "AK_ProductModel_Name")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid, "AK_ProductModel_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_ProductModel_rowguid")
                     .IsUnique();
 
                 entity.HasIndex(e => e.CatalogDescription, "PXML_ProductModel_CatalogDescription");
@@ -466,7 +466,7 @@ namespace test_Dapper.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())");
             });
@@ -480,7 +480,7 @@ namespace test_Dapper.Models
 
                 entity.HasComment("Cross-reference table mapping product descriptions and the language the description is written in.");
 
-                entity.HasIndex(e => e.Rowguid, "AK_ProductModelProductDescription_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_ProductModelProductDescription_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductModelId)
@@ -501,7 +501,7 @@ namespace test_Dapper.Models
                     .HasDefaultValueSql("(getdate())")
                     .HasComment("Date and time the record was last updated.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())");
 
@@ -525,7 +525,7 @@ namespace test_Dapper.Models
 
                 entity.HasComment("Individual products associated with a specific sales order. See SalesOrderHeader.");
 
-                entity.HasIndex(e => e.Rowguid, "AK_SalesOrderDetail_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_SalesOrderDetail_rowguid")
                     .IsUnique();
 
                 entity.HasIndex(e => e.ProductId, "IX_SalesOrderDetail_ProductID");
@@ -555,10 +555,10 @@ namespace test_Dapper.Models
                     .HasColumnName("ProductID")
                     .HasComment("Product sold to customer. Foreign key to Product.ProductID.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.Property(e => e.UnitPrice)
                     .HasColumnType("money")
@@ -590,7 +590,7 @@ namespace test_Dapper.Models
                 entity.HasIndex(e => e.SalesOrderNumber, "AK_SalesOrderHeader_SalesOrderNumber")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid, "AK_SalesOrderHeader_rowguid")
+                entity.HasIndex(e => e.rowguid, "AK_SalesOrderHeader_rowguid")
                     .IsUnique();
 
                 entity.HasIndex(e => e.CustomerId, "IX_SalesOrderHeader_CustomerID");
@@ -648,10 +648,10 @@ namespace test_Dapper.Models
 
                 entity.Property(e => e.RevisionNumber).HasComment("Incremental number to track changes to the sales order over time.");
 
-                entity.Property(e => e.Rowguid)
+                entity.Property(e => e.rowguid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())")
-                    .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
+                    .HasComment("rowguidCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.Property(e => e.SalesOrderNumber)
                     .IsRequired()

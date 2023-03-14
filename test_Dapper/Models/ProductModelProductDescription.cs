@@ -22,7 +22,7 @@ namespace test_Dapper.Models
         /// The culture for which the description is written
         /// </summary>
         public string Culture { get; set; }
-        public Guid Rowguid { get; set; }
+        public Guid rowguid { get; set; }
         /// <summary>
         /// Date and time the record was last updated.
         /// </summary>
